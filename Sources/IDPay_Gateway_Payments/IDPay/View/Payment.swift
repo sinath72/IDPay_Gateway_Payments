@@ -14,6 +14,8 @@ public protocol DataModelDelegate:AnyObject {
 }
 public struct payment{
     weak var deleget:DataModelDelegate?
+    public init(){
+    }
     public func getPay(id:String,amount:Int,name:String,phone:String,mail:String,description:String,api_key:String,callbackURL:String){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
