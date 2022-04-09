@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 public struct ListTransaction {
-    func showStatusCode(api_key:String){
+    func showListTransaction(api_key:String){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=25") else { return}
