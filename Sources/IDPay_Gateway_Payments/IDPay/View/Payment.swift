@@ -43,6 +43,7 @@ public struct payment{
                     let responseString = try? JSON(data: data!)
                     let data = Transaction(order_ids: id, transaction_ids: responseString!["id"].stringValue,urls: responseString!["link"].stringValue)
                     self.deleget?.didReciveData(data: data)
+                    print(data.getUrl())
                 }
                 else {
                     let responseString = try? JSON(data: data!)
