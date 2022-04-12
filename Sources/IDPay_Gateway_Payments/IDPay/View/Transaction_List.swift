@@ -14,7 +14,7 @@ public struct ListTransaction {
     public func showListTransaction(api_key:String){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
-        guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=25") else { return}
+        guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=100") else { return}
         let request = NSMutableURLRequest(url: URLL)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
