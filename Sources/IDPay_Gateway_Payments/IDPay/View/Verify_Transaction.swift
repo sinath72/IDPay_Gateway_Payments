@@ -8,7 +8,9 @@
 import Foundation
 import SwiftyJSON
 public struct VerifyTransaction {
-    func Verify(id:String,order_id:String,api_key:String,completion: @escaping (String) -> ()){
+    public init(){
+    }
+    public func Verify(id:String,order_id:String,api_key:String,completion: @escaping (String) -> ()){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/verify") else { return}
