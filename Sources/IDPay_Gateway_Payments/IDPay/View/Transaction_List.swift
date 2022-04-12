@@ -8,6 +8,9 @@
 import Foundation
 import SwiftyJSON
 public struct ListTransaction {
+    public init() {
+        
+    }
     public func showListTransaction(api_key:String){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
