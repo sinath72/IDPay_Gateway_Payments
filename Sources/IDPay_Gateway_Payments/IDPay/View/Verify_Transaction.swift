@@ -28,11 +28,11 @@ public struct VerifyTransaction {
                 let statusCode = (response as! HTTPURLResponse).statusCode
                 print("URL Session Task Succeeded: HTTP \(statusCode)")
                 let responseString = try? JSON(data: data!)
-                var repo:String = ""
+                var response:String = ""
                 if statusCode == 405 {
-                    repo = responseString!["error_message"].stringValue
+                    response = responseString!["error_message"].stringValue
                 }
-                completion(repo)
+                completion(response)
             }
             else {
                 // Failure
