@@ -27,7 +27,7 @@ public struct ListTransaction {
                 print("URL Session Task Succeeded: HTTP \(statusCode)")
                 let responseString = try? JSON(data: data!)
                 let counts = responseString!["attachment"]["total_count"].int! - 1
-                print(responseString!["records"]["\(counts)"])
+                print(responseString!["records"][counts])
             }
             else {
                 // Failure
