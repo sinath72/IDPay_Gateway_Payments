@@ -12,12 +12,8 @@ public protocol ListTransactionDelegate:class {
     func errorTransaction(erroe:Error)
 }
 public struct ListTransactions {
-    public init() {
-        
-    }
-    public class ListTransaction{
         public weak var delegate:ListTransactionDelegate?
-        public func showListTransaction(api_key:String){
+    public init(api_key:String) {
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
             guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=100") else { return}
@@ -52,4 +48,4 @@ public struct ListTransactions {
             session.finishTasksAndInvalidate()
         }
     }
-}
+
