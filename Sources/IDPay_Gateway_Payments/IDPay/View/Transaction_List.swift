@@ -37,7 +37,7 @@ public struct ListTransaction {
                     data.append(temp)
                 }
                 self.delegate?.showListTransaction(data: data)
-                print(responseString!["records"][10][["Id"]])
+                print(responseString!["records"][15]{["Id"]})
             }
             else {
                 // Failure
