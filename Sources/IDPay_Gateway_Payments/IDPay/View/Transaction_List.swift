@@ -13,6 +13,8 @@ public protocol ListTransactionDelegate:class {
 }
 public struct ListTransactions {
         public weak var delegate:ListTransactionDelegate?
+    public init(){
+    }
     public init(api_key:String) {
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
