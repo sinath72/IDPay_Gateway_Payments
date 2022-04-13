@@ -15,10 +15,10 @@ public protocol QueryDeleget:class {
     func data_query(data:Transaction_Query_Information)
     func error_query(erroe:Error)
 }
+    public class QueryTransacction {
 public struct Query{
     public init(){
     }
-    public class QueryTransacction {
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
