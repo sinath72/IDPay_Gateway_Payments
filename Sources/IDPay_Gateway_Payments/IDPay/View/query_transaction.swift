@@ -16,6 +16,9 @@ public protocol QueryDeleget:class {
     func error_query(erroe:Error)
 }
 public struct Query{
+    public init(){
+    }
+    public class QueryTransacction {
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
@@ -23,12 +26,10 @@ public struct Query{
         private var Class_Api_Key = ""
         private var status = ""
         public var manual:Bool = false // For Manual Query
-    public init(){
-    }
         public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
-            Transaction_Id = id
-            Transaction_Order = order_id
-            Class_Api_Key = api_key
+            self.Transaction_Id = id
+            self.Transaction_Order = order_id
+            self.Class_Api_Key = api_key
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
             guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/inquiry") else { return}
@@ -129,14 +130,14 @@ public struct Query{
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
-                            status = state.rawValue
+                            self.status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                         }
                         else{
                             state = TransactionStatus.t100
-                            status = state.rawValue
+                            self.status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
@@ -144,17 +145,17 @@ public struct Query{
                     })
                 }
                 else{
-                    status = state.rawValue
+                    self.status = state.rawValue
                     completion(state.rawValue)
                     let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                     self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                 }
             }
             else {
-                status = state.rawValue
+                self.status = state.rawValue
                 let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                 self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
             }
         }
     }
-
+}
