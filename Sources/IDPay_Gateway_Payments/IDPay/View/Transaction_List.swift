@@ -12,8 +12,8 @@ public protocol ListTransactionDelegate:class {
     func errorTransaction(erroe:Error)
 }
 public struct ListTransactions {
-        public weak var delegate:ListTransactionDelegate?
     public init(){
+        public weak var delegate:ListTransactionDelegate?
     }
     public init(api_key:String) {
             let sessionConfig = URLSessionConfiguration.default
