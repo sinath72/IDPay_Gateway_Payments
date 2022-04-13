@@ -16,9 +16,6 @@ public protocol QueryDeleget:class {
     func error_query(erroe:Error)
 }
 public struct Query{
-    public init(){
-    }
-    public class QueryTransacction {
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
@@ -26,6 +23,8 @@ public struct Query{
         private var Class_Api_Key = ""
         private var status = ""
         public var manual:Bool = false // For Manual Query
+    public init(){
+    }
         public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             self.Transaction_Id = id
             self.Transaction_Order = order_id
@@ -158,4 +157,4 @@ public struct Query{
             }
         }
     }
-}
+
