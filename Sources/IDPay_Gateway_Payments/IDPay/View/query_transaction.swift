@@ -26,7 +26,7 @@ public struct Query{
         private var Class_Api_Key = ""
         private var status = ""
         public var manual:Bool = false // For Manual Query
-        func QueryStatusTransaction(id:String,order_id:String,api_key:String){
+        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             self.Transaction_Id = id
             self.Transaction_Order = order_id
             self.Class_Api_Key = api_key
