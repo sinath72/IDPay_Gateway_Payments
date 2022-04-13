@@ -11,7 +11,7 @@ public protocol ListTransactionDelegate:class {
     func showListTransaction(data:[TransactionList])
     func errorTransaction(erroe:Error)
 }
-public struct ListTransaction {
+public struct ListTransactions {
     public init() {
         
     }
