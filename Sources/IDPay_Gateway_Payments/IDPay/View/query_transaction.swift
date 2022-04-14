@@ -130,11 +130,11 @@ public struct Query{
             print(state.rawValue)
             if self.manual == false {
                 if code == "10" {
-                    VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { [self] (rep) in
+                    VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { (rep) in
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
-                            self.status = state.rawValue!
+                            self.status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
