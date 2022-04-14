@@ -134,14 +134,14 @@ public struct Query{
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
-                            status = state.rawValue
+                            self.status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                         }
                         else{
                             state = TransactionStatus.t100
-                            status = state.rawValue
+                            self.status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
@@ -149,14 +149,14 @@ public struct Query{
                     })
                 }
                 else{
-                    status = state.rawValue
+                    self.status = state.rawValue
                     completion(state.rawValue)
                     let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                     self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                 }
             }
             else {
-                status = state.rawValue
+                self.status = state.rawValue
                 let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                 self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
             }
