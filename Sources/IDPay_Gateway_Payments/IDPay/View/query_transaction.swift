@@ -26,7 +26,7 @@ public struct Query{
         private var Class_Api_Key = ""
         private var status = ""
         public var manual:Bool = false // For Manual Query
-        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
+        public mutating func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             Transaction_Id = id
             Transaction_Order = order_id
             Class_Api_Key = api_key
@@ -79,7 +79,7 @@ public struct Query{
             task.resume()
             session.finishTasksAndInvalidate()
         }
-        private func goStatusDescription(code:String,completion: @escaping (String) -> ()){
+        private mutating func goStatusDescription(code:String,completion: @escaping (String) -> ()){
             let status = "t\(code)"
             var state:TransactionStatus!
             switch status {
