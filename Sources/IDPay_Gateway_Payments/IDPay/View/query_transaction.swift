@@ -15,9 +15,7 @@ public protocol QueryDeleget:class {
     func data_query(data:Transaction_Query_Information)
     func error_query(erroe:Error)
 }
-public struct Query{
-    public init(){
-    }
+public struct Query:class{
     public class QueryTransacction {
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
