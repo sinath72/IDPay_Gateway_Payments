@@ -17,6 +17,8 @@ public protocol QueryDeleget:class {
 }
 //public struct Query{
     public class QueryTransacction {
+        public init(){
+        }
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
