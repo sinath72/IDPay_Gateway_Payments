@@ -19,16 +19,17 @@ public struct Query{
     public weak var Query_deleget:QueryDeleget?
     public weak var ResultCode_delegate:ResultCodeDeleget?      
     public var manual:Bool = false // For Manual Query
+    var Transaction_Id = ""
+    var Transaction_Order = ""
+    var Class_Api_Key = ""
+    var status = ""
     public init(){
     }
     public init(id:String,order_id:String,api_key:String){
    // public class QueryTransacction {
       //  public weak var Query_deleget:QueryDeleget?
        // public weak var ResultCode_delegate:ResultCodeDeleget?
-        var Transaction_Id = ""
-        var Transaction_Order = ""
-        var Class_Api_Key = ""
-        var status = ""
+
 //        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             self.Transaction_Id = id
             self.Transaction_Order = order_id
