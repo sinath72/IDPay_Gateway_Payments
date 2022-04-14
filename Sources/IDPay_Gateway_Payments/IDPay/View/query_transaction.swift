@@ -16,12 +16,14 @@ public protocol QueryDeleget:class {
     func error_query(erroe:Error)
 }
 public struct Query{
+    public weak var Query_deleget:QueryDeleget?
+    public weak var ResultCode_delegate:ResultCodeDeleget?
     public init(){
     }
     public init(id:String,order_id:String,api_key:String){
    // public class QueryTransacction {
-        public weak var Query_deleget:QueryDeleget?
-        public weak var ResultCode_delegate:ResultCodeDeleget?
+      //  public weak var Query_deleget:QueryDeleget?
+       // public weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
         private var Transaction_Order = ""
         private var Class_Api_Key = ""
