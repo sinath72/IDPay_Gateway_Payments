@@ -123,7 +123,7 @@ public protocol QueryDeleget:class {
                 state = TransactionStatus.NF
                 break
             }
-            print(state.rawValue)
+           // print(state.rawValue)
             if self.manual == false {
                 if code == "10" {
                     VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { (rep) in
