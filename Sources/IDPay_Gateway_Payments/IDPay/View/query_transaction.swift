@@ -24,10 +24,10 @@ public struct Query{
    // public class QueryTransacction {
       //  public weak var Query_deleget:QueryDeleget?
        // public weak var ResultCode_delegate:ResultCodeDeleget?
-        private var Transaction_Id = ""
-        private var Transaction_Order = ""
-        private var Class_Api_Key = ""
-        private var status = ""
+        var Transaction_Id = ""
+        var Transaction_Order = ""
+        var Class_Api_Key = ""
+        var status = ""
         public var manual:Bool = false // For Manual Query
 //        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             self.Transaction_Id = id
@@ -161,4 +161,3 @@ public struct Query{
             }
         }
     }
-}
