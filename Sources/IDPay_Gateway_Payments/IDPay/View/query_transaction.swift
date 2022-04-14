@@ -157,7 +157,7 @@ public struct Query{
                 ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
             }
         }
-    }    
+        
     public init(){
     }
 }
