@@ -14,6 +14,7 @@ public protocol ResultCodeDeleget:class {
 public protocol QueryDeleget:class {
     func data_query(data:Transaction_Query_Information)
     func error_query(erroe:Error)
+}
     public class QueryTransacction {
         public init(){
         }
