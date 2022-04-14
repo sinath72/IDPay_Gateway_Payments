@@ -16,21 +16,17 @@ public protocol QueryDeleget:class {
     func error_query(erroe:Error)
 }
 public struct Query{
-    public weak var Query_deleget:QueryDeleget?
-    public weak var ResultCode_delegate:ResultCodeDeleget?      
-    public var manual:Bool = false // For Manual Query
-    var Transaction_Id = ""
-    var Transaction_Order = ""
-    var Class_Api_Key = ""
-    public var status = ""
     public init(){
     }
-    public init(id:String,order_id:String,api_key:String){
-   // public class QueryTransacction {
-      //  public weak var Query_deleget:QueryDeleget?
-       // public weak var ResultCode_delegate:ResultCodeDeleget?
-
-//        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
+    public class QueryTransacction {
+        public weak var Query_deleget:QueryDeleget?
+        public weak var ResultCode_delegate:ResultCodeDeleget?
+        private var Transaction_Id = ""
+        private var Transaction_Order = ""
+        private var Class_Api_Key = ""
+        private var status = ""
+        public var manual:Bool = false // For Manual Query
+        public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
             self.Transaction_Id = id
             self.Transaction_Order = order_id
             self.Class_Api_Key = api_key
@@ -84,9 +80,9 @@ public struct Query{
             session.finishTasksAndInvalidate()
         }
         private func goStatusDescription(code:String,completion: @escaping (String) -> ()){
-            let status2 = "t\(code)"
+            let status = "t\(code)"
             var state:TransactionStatus!
-            switch status2 {
+            switch status {
             case "t1":
                 state = TransactionStatus.t1
                 break
@@ -162,3 +158,4 @@ public struct Query{
             }
         }
     }
+}
