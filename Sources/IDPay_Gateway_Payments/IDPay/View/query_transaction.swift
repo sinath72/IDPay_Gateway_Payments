@@ -130,7 +130,7 @@ public struct Query{
             print(state.rawValue)
             if self.manual == false {
                 if code == "10" {
-                    VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { [self] (rep) in
+                    VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { (rep) in
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
