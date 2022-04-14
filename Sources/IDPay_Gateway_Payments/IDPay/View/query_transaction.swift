@@ -22,7 +22,7 @@ public struct Query{
     var Transaction_Id = ""
     var Transaction_Order = ""
     var Class_Api_Key = ""
-    var status = ""
+    public var status = ""
     public init(){
     }
     public init(id:String,order_id:String,api_key:String){
