@@ -84,9 +84,9 @@ public struct Query{
             session.finishTasksAndInvalidate()
         }
         private func goStatusDescription(code:String,completion: @escaping (String) -> ()){
-            let status = "t\(code)"
+            let status2 = "t\(code)"
             var state:TransactionStatus!
-            switch status {
+            switch status2 {
             case "t1":
                 state = TransactionStatus.t1
                 break
