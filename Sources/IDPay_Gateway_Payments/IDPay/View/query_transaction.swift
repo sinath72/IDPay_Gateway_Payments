@@ -18,8 +18,6 @@ public protocol QueryDeleget:class {
 public struct Query{
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
-    public init(){
-    }
     public class QueryTransacction {
         private weak var Query_deleget:QueryDeleget?
         private weak var ResultCode_delegate:ResultCodeDeleget?
@@ -159,5 +157,8 @@ public struct Query{
                 self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
             }
         }
+    }
+    
+    public init(){
     }
 }
