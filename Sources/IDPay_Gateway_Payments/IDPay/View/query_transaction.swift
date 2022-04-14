@@ -18,7 +18,7 @@ public protocol QueryDeleget:class {
 public struct Query{
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
-    public private (set) class QueryTransacction {
+    public class QueryTransacction {
         private weak var Query_deleget:QueryDeleget?
         private weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
