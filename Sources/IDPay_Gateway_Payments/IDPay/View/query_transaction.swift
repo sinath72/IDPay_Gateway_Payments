@@ -134,7 +134,7 @@ public struct Query{
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
-                            self.status = state.rawValue
+                            self.status = state.rawValue!
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
                             self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
