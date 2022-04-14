@@ -18,18 +18,18 @@ public protocol QueryDeleget:class {
 public struct Query{
         public weak var Query_deleget:QueryDeleget?
         public weak var ResultCode_delegate:ResultCodeDeleget?
-    public class QueryTransacction {
-        private weak var Query_deleget:QueryDeleget?
-        private weak var ResultCode_delegate:ResultCodeDeleget?
+  //  public class QueryTransacction {
+     //   private weak var Query_deleget:QueryDeleget?
+   //     private weak var ResultCode_delegate:ResultCodeDeleget?
         private var Transaction_Id = ""
         private var Transaction_Order = ""
         private var Class_Api_Key = ""
         private var status = ""
         public var manual:Bool = false // For Manual Query
         public func QueryStatusTransaction(id:String,order_id:String,api_key:String){
-            self.Transaction_Id = id
-            self.Transaction_Order = order_id
-            self.Class_Api_Key = api_key
+            Transaction_Id = id
+            Transaction_Order = order_id
+            Class_Api_Key = api_key
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
             guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/inquiry") else { return}
@@ -49,31 +49,31 @@ public struct Query{
                     let statusCode = (response as! HTTPURLResponse).statusCode
                     print("URL Session Task Succeeded: HTTP \(statusCode)")
                     let responseString = try? JSON(data: data!)
-                    self.goStatusDescription(code: responseString!["status"].stringValue, completion: { statush in
-                        if self.manual == false {
+                    goStatusDescription(code: responseString!["status"].stringValue, completion: { statush in
+                        if manual == false {
                             if statush == "برگشت خورده سیستمی" || statush == "طرف ۷۲ ساعت به شما بازگشت داده می شود" {
                                 let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status:  "برگشت خورده سیستمی", desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
-                                self.Query_deleget?.data_query(data: query)
+                                Query_deleget?.data_query(data: query)
                             }
                             else if responseString!["status"].stringValue == "10" {
                                 let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status: "تراکنش موفقیت آمیز بود", desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
-                                self.Query_deleget?.data_query(data: query)
+                                Query_deleget?.data_query(data: query)
                             }
                             else if statush != "به درگاه پرداخت منتقل شد"{
-                                let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status: self.status, desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
-                                self.Query_deleget?.data_query(data: query)
+                                let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status: status, desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
+                                Query_deleget?.data_query(data: query)
                             }
                         }
                         else{
-                            let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status: self.status, desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
-                            self.Query_deleget?.data_query(data: query)
+                            let query = Transaction_Query_Information(id: responseString!["id"].stringValue, order_id: responseString!["order_id"].stringValue, amount:  responseString!["amount"].stringValue, date: responseString!["date"].stringValue, Track_ID_Payment:  responseString!["payment"]["track_id"].stringValue, Track_ID_IDPay:  responseString!["track_id"].stringValue, status: status, desc: responseString!["payer"]["desc"].stringValue.replacingOccurrences(of: ":", with: ""))
+                            Query_deleget?.data_query(data: query)
                         }
                     })
                 }
                 else {
                     // Failure
                     print("URL Session Task Failed: %@", error!.localizedDescription);
-                    self.Query_deleget?.error_query(erroe: error?.localizedDescription as! Error)
+                    Query_deleget?.error_query(erroe: error?.localizedDescription as! Error)
                 }
             }
             task.resume()
@@ -124,37 +124,37 @@ public struct Query{
                 break
             }
             print(state.rawValue)
-            if self.manual == false {
+            if manual == false {
                 if code == "10" {
-                    VerifyTransaction().Verify(id: self.Transaction_Id, order_id: self.Transaction_Order, api_key: self.Class_Api_Key, completion: { (rep) in
+                    VerifyTransaction().Verify(id: Transaction_Id, order_id: Transaction_Order, api_key: Class_Api_Key, completion: { (rep) in
                         if (rep != "") {
                             print("responsivity = \(rep)")
                             state = TransactionStatus.returned
-                            self.status = state.rawValue
+                            status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
-                            self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
+                            ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                         }
                         else{
                             state = TransactionStatus.t100
-                            self.status = state.rawValue
+                            status = state.rawValue
                             completion(state.rawValue)
                             let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
-                            self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
+                            ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                         }
                     })
                 }
                 else{
-                    self.status = state.rawValue
+                    status = state.rawValue
                     completion(state.rawValue)
                     let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
-                    self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
+                    ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
                 }
             }
             else {
-                self.status = state.rawValue
+                status = state.rawValue
                 let StatusCodeResult = TransactionStatusCodeResult(result: state.rawValue)
-                self.ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
+                ResultCode_delegate?.Data_ResualtCode(data: StatusCodeResult)
             }
         }
     }    
