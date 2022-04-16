@@ -16,7 +16,7 @@ public struct payment{
     public weak var deleget:DataModelDelegate?
     public init(){
     }
-    public func getPay(id:String,amount:Int,name:String,phone:String,mail:String,description:String,api_key:String,callbackURL:String){
+    public func getPay(order_id:String,amount:Int,name:String,phone:String,mail:String,description:String,api_key:String,callbackURL:String){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment") else { return }
@@ -26,7 +26,7 @@ public struct payment{
         request.addValue(api_key, forHTTPHeaderField: "X-API-KEY")
         request.addValue("0", forHTTPHeaderField: "X-SANDBOX")
         let bodyObject = [
-            "order_id": id,
+            "order_id": order_id,
             "amount": amount,
             "name": name,
             "phone": phone,
@@ -41,7 +41,7 @@ public struct payment{
                 print("URL Session Task Succeeded: HTTP \(statusCode)")
                 if (statusCode == 201 || statusCode == 200) {
                     let responseString = try? JSON(data: data!)
-                    let data = Transaction(order_ids: id, transaction_ids: responseString!["id"].stringValue,urls: responseString!["link"].stringValue)
+                    let data = Transaction(order_ids: order_id, transaction_ids: responseString!["id"].stringValue,urls: responseString!["link"].stringValue)
                     self.deleget?.didReciveData(data: data)
                 }
                 else {
