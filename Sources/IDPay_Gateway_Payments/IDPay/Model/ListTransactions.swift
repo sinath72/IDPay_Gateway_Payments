@@ -67,7 +67,7 @@ public class TransactionList{
         self.settlement_account_BankId.append(settlement_account_BankId)
         self.settlement_account_BankName.append(settlement_account_BankName)
     }
-    public func get_count() -> Int { return self.count }
+    public func get_count_all_transactions() -> Int { return self.count }
     public func get_status() -> [Int] { return self.status }
     public func get_track_id() -> [Int64] { return self.track_id }
     public func get_Id() -> [String] { return self.Id }
