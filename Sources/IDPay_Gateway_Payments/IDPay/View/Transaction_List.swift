@@ -15,10 +15,10 @@ public struct ListTransaction {
     public weak var delegate:ListTransactionDelegate?
     public init() {        
     }
-    public func showListTransaction(api_key:String){
+    public func showListTransaction(api_key:String,count:Int = 25){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
-        guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=100") else { return}
+        guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment/transactions?page=0&page_size=\(count)") else { return}
         let request = NSMutableURLRequest(url: URLL)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
