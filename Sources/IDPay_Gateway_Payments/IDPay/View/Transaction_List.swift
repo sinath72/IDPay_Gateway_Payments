@@ -37,7 +37,7 @@ public struct ListTransaction {
                     data.append(temp)
                 }
                 self.delegate?.showListTransaction(data: data)
-                print(data)
+                print(responseString)
             }
             else {
                 // Failure
