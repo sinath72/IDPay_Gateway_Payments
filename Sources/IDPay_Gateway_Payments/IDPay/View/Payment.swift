@@ -16,7 +16,7 @@ public struct payment{
     public weak var deleget:DataModelDelegate?
     public init(){
     }
-    public func getPay(order_id:String,amount:Int,name:String,phone:String,mail:String,description:String,api_key:String,callbackURL:String){
+    public func getPay(api_key:String,callbackURL:String,order_id:String,amount:Int,name:String = "",phone:String = "",mail:String = "",description:String = ""){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         guard let URLL = URL(string: "https://api.idpay.ir/v1.1/payment") else { return }
