@@ -6,11 +6,11 @@
 
 <code> 
 
-        var getpayment = payment()
+          var getpayment = payment()
         
-        getpayment.delegate = self --> شناساندن delegate به controller تان
+         getpayment.delegate = self --> شناساندن delegate به controller تان
         
-        getpayment.getPay(api_key: "api key ای که برای وب سرویس شما است", callbackURL: "آدرس ای که در وب سرویس داده اید" ,order_id: "شناسه ی خرید شما", amount: مبلغ)
+         getpayment.getPay(api_key: "api key ای که برای وب سرویس شما است", callbackURL: "آدرس ای که در وب سرویس داده اید" ,order_id: "شناسه ی خرید شما", amount: مبلغ)
 </code>
 
 
