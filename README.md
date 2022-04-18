@@ -1,15 +1,24 @@
 # IDPay_Gateway_Payments
 
 برای دریافت لینک میبایست به صورت زیر عمل کرد:
+
 ۱-
-    <code>
+
+<code>
+        
         var getpayment = payment()
+        
         getpayment.delegate = self --> شناساندن delegate به controller تان
+        
         getpayment.getPay(api_key: "api key ای که برای وب سرویس شما است", callbackURL: "آدرس ای که در وب سرویس داده اید" ,order_id: "شناسه ی خرید شما", amount: مبلغ)
-    </code>
+   
+</code>
+
+
 ۲-
- افزودن delegate به controller مربوطه مثال:
-    <code>
+افزودن delegate به controller مربوطه مثال:
+   
+   <code>
     extention viewcontroller:DataModelDelegate{
         func didReciveData(data:Transaction){
         برای دریافت لینک درگاه پرداخت و id تراکنش می باشد
