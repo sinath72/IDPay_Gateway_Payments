@@ -16,6 +16,16 @@ public struct payment{
     public weak var deleget:DataModelDelegate?
     public init(){
     }
+    /* مقادیر api_key, callbackURL, order_id, amount ضروری میباشند و مقادیر دیگر بصورت دلخواه میتوان تنظیم کرد یا اصلا در تابع وجود نداشته باشند
+     بصورت:
+     getPay(api_key:self.apikey,callbackURL:self.callbackurl,order_id:self.orderid,amount:self.amount)
+     باشد و مقادیر دیگر را بصورت دلخواه میتوان اضافه کرد که:
+     name
+     phone
+     mail
+     description
+     می باشند
+     */
     public func getPay(api_key:String,callbackURL:String,order_id:String,amount:Int,name:String = "",phone:String = "",mail:String = "",description:String = ""){
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
