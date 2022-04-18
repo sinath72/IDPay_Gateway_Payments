@@ -15,26 +15,25 @@
 
 ### 2- افزودن delegate به controller مربوطه مثال:
    
-   <code>
         
-    extention viewcontroller:DataModelDelegate{
+         extention viewcontroller:DataModelDelegate{
         
-        func didReciveData(data:Transaction){
+            func didReciveData(data:Transaction){
         
         برای دریافت لینک درگاه پرداخت و id تراکنش می باشد
 
-        }
+            }
        
-        func didFildWithError(error:Error){
+            func didFildWithError(error:Error){
         برای ارور احتمالی یا عدم برقراری ارتباط با سرور و.... می باشد
 
-        }
-        
-        func didErrorCreate(errors:Transaction){
+            }
+            
+            func didErrorCreate(errors:Transaction){
         
         برای ارور در ساخت لینک درگاه پرداخت از سوی سرور می باشد
 
-        }
+            }
         
         }
         
