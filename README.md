@@ -43,15 +43,15 @@
    
    <code>
         
-    name,
+     name,
         
-    phone,
+     phone,
         
-    mail,
+     mail,
         
-    description 
+     description 
 
-</code>
+   </code>
     
 #### و میتوانید از هر کدام به دلخواه اسفاده نمایید
 
