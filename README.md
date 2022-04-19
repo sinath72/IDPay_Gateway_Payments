@@ -40,19 +40,19 @@
    </code>
    
 ### 3- پارامتر های زیر در تابع ساخت لینک درگاه پرداخت اختیاری می باشد:
-   
-   <code>
+  
+  <code>
         
-     name,
+        name,
         
-     phone,
+        phone,
         
-     mail,
+        mail,
         
-     description 
-
+        description
+        
    </code>
-    
+   
 #### و میتوانید از هر کدام به دلخواه اسفاده نمایید
 
 ### ۴- در تابع showListTransaction در کلاس  ListTransaction پارامتر count بصورت دلخواه برای دریافت  لیست تراکنش ها به تعداد دلخواه تنظیم شده است
